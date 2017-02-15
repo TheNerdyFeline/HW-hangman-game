@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>hangman</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+	<div class="container">
+	    <div class="row-1">
+	    <div class="jumbotron">
+		<h1 id="name">Save the Animals</h1>
+		<p>Rescue each animal from the flooding river, before they drown.  Each wrong guess increases water level, rescue all 3 animals to win.</p>
+	    </div> <!-- jumbotron close -->
+	    </div><!-- close row-1 -->
+	    <br>
+	    <div class="row-2">
+		<div class="col-sm-5" id="waterLevel">
+		    <h3>Water Level:</h3>
+		</div><!-- close waterLevel -->
+		<div class="col-sm-5 col-sm-offset-2" id="gameInfo">
+		    <div class="row wins"><h3>Wins:</h3></div>
+		    <div class="row level"><h3>Level:</h3></div>
+		</div><!-- close gameInfo -->
+	    </div><!-- close row-2 -->
+	    <br>
+	   <div class="row-3">
+	       <div class="col-sm-12" id="guessWord">
+		   <span id="guessWord"></span>
+		</div><!-- close word -->
+	   </div><!-- close row-3 -->
+	   <br>
+	   <div class="row-4">
+	       <div class="col-sm-12" id="animals">
+		   <div class="row-fluid">
+		       <div class="col-sm-12" id="river">
+		       </div><!-- close river -->
+		   </div><!-- close row-fluid -->
+		   <img class="responsive-image" src="assets/images/cat.png">
+	       </div><!-- close animals -->
+	    </div><!-- close row-4 -->
+	    <div class="row-5">
+		<div class="col-sm-12" id="guessed">
+		    <div class="row"><h3>Letters Guessed</h3></div>
+		    <span class="row" id="wrongLetters"></span>
+		</div><!-- close lettersGuessed -->
+	    </div><!-- close row-5 -->
+	</div><!-- container close -->
+	<script src="assets/javascript/game.js"></script>
+    </body>
+</html>

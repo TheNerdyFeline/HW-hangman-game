@@ -1,0 +1,60 @@
+body {
+    width: 70%;
+    margin: auto;
+    background: #91CDFF;
+}
+.jumbotron {
+    background: #DFE6D1;
+    padding: 10px;
+}
+
+#name {
+    color: #4996C9;
+    font-size: 85px;
+    text-align: center;
+}
+
+p {
+    color: #15222B;
+    font-size: 16px;
+}
+
+/* top 2 boxes with game info */
+.col-sm-5 {
+    background: #DFE6D1;
+}
+
+h3 {
+    color: #5A5E68;
+    text-align: center;
+}
+
+.col-sm-12 {
+    background: #DFE6D1;
+    text-align: center;
+    height: 60px;
+    margin-top: 30px;
+}
+
+#animals {
+    position: relative;
+    background: #10C536;
+    padding: 0px;
+    height: 100%;
+    padding: 10px;
+}
+
+.responsive-image {
+    width: 100px;
+}
+
+#river {
+    position: absolute;
+    background: #1232B7;
+    opacity: .5;
+    height: 10px;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}

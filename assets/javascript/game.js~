@@ -1,0 +1,39 @@
+var startGame = false;
+var gameStarted = false;
+var waterLevel = 0;
+var wins = 0;
+var level = 1;
+var lettersGuessed = [];
+var word = "";
+var blanks = 0;
+var lettersInWord = [];
+var successes = [];
+
+// easy dictionary of words
+var easyWords = ["bear", "cat", "dog", "tiger", "lion", "monkey", "panther", "rabbit", "snake", "spider"]
+
+
+if (level = 1) {
+	var word = easyWords[Math.floor(Math.random() * easyWords.length)];
+    lettersInWord = word.split("");
+    for (i = 0; i < lettersInWord.length; i++) {
+	successes.push("_");
+    }
+    document.getElementById("guessWord").innerHTML = successes;
+    console.log(word);
+    console.log(successes);
+    console.log(lettersInWord);
+    document.onkeyup = function(event){
+	var letter =  String.fromCharCode(event.keyCode).toLowerCase();
+
+	if (letter = lettersInWord[i]) {
+	    successes.push("letter")
+	} else {
+	    lettersGuessed.push(letter);
+	    console.log(lettersGuessed);
+	    document.getElementById("wrongLetters").innerHTML = lettersGuessed;
+	}
+	    
+	}
+    
+}

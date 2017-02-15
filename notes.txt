@@ -1,0 +1,8 @@
+body bg: #91CDFF lt blue
+all bg: #DFE6D1 lt grey/off white
+jumbo title: #4996C9 grey blue
+jumpbo p: #15222B dr grey blue
+water level: #123B7 same as river
+h3: #5A5E68 md grey
+river bg: #52BFD9 sky? or #10C536 grass?
+river color: #1232B7 md blue
