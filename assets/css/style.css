@@ -38,6 +38,10 @@ h3 {
     font-size: 36px;
 }
 
+#guessed {
+    height: 100%;
+}
+
 #animals {
     position: relative;
     background: #10C536;
