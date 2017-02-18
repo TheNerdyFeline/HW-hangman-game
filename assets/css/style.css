@@ -29,6 +29,11 @@ h3 {
     text-align: center;
 }
 
+h2 {
+    position: absolute;
+    vertical-align: center;
+    color: #4996C9;
+}
 
 .col-sm-12 {
     background: #DFE6D1;

@@ -7,6 +7,12 @@ var blanks = 0;
 var lettersInWord = [];
 var successes = [];
 var riverHeight = 15;
+document.getElementById("pic1").style.visibility = "hidden";
+document.getElementById("pic2").style.visibility = "hidden";
+document.getElementById("pic3").style.visibility = "hidden";
+document.getElementById("pic4").style.visibility = "hidden";
+document.getElementById("pic5").style.visibility = "hidden";
+document.getElementById("pic6").style.visibility = "hidden";
 
 /* easy dictionary of words */
 var easyWords = ["ant", "anteater", "antelope", "bat", "bear", "beagle", "beaver", "bee", "beetle", "bird", "bulldog","bobcat", "bullfrog", "butterfly", "cat", "catfish", "camel", "cheetah", "chicken", "chipmunk", "cougar", "cow", "crab", "crane", "crocodile", "deer", "dingo", "dodo", "dog", "dolphin", "donkey", "duck", "eagle", "earwig", "eel","elephant", "emu", "falcon", "ferret", "fish", "flamingo", "flounder", "fly", "frog", "fox", "gorilla", "hornet", "leopard", "lion", "lizard", "monkey", "ostrich", "owl", "panther", "penguin", "rabbit", "seal","shark", "snake", "spider",  "squirrel", "tiger", "toad"];
@@ -21,6 +27,12 @@ function startGame() {
 	lettersGuessed = [];
 	timeLeft = 10;
 	riverHeight = 15;
+	document.getElementById("pic1").style.visibility = "visible";
+	document.getElementById("pic2").style.visibility = "hidden";
+	document.getElementById("pic3").style.visibility = "hidden";
+	document.getElementById("pic4").style.visibility = "hidden";
+	document.getElementById("pic5").style.visibility = "hidden";
+	document.getElementById("pic6").style.visibility = "visible";
 	
 	word = easyWords[Math.floor(Math.random() * easyWords.length)];
 	/* splits word into indivual leters and put into an array */
@@ -32,48 +44,76 @@ function startGame() {
 	}
 	console.log(word);
 	roundComplete();
-    } // closes if statement inside startGame
-    
+    };
+
     if (level === 2) {
 	lettersGuessed = [];
 	successes = [];
 	riverHeight = 15;
+	
+	document.getElementById("pic1").style.visibility = "visible";
+	document.getElementById("pic2").style.visibility = "hidden";
+	document.getElementById("pic3").style.visibility = "visible";
+	document.getElementById("pic4").style.visibility = "hidden";
+	document.getElementById("pic5").style.visibility = "visible";
+	document.getElementById("pic6").style.visibility = "visible";
 
 	word = mdWords[Math.floor(Math.random() * mdWords.length)];
 	lettersInWord = word.split("");
-	for (var i = 0; i < lettersInWord.length; i++) {
+	for ( i = 0; i < lettersInWord.length; i++) {
 	    successes.push("_");
 	}
-    }
 
-    /* testing random word function */
-    console.log(word);
-    /* puts user info into html for user */
+	console.log(word);
+	
+	
+    };
+
+    if (level === 3) {
+	lettersGuessed = [];
+	successes = [];
+	riverHeight = 15;
+	
+	document.getElementById("pic1").style.visibility = "visible";
+	document.getElementById("pic2").style.visibility = "visible";
+	document.getElementById("pic3").style.visibility = "visible";
+	document.getElementById("pic4").style.visibility = "visible";
+	document.getElementById("pic5").style.visibility = "visible";
+	document.getElementById("pic6").style.visibility = "visible";
+
+	word = hardWords[Math.floor(Math.random() * mdWords.length)];
+	lettersInWord = word.split(" ");
+	for (i = 0; i < lettersInWord.length; i++) {
+	    successes.push("_");
+	console.log(word);
+    };
+
     document.getElementById("guessWord").innerHTML = successes.join(" ");
     document.getElementById("timeToFlood").innerHTML = timeLeft;
     document.getElementById("wins").innerHTML = wins;
     document.getElementById("level").innerHTML = level;
     document.getElementById("river").style.height = riverHeight + "px";
     
-}; /* end function */
+    }
+};/* end function */
 
 /* this is seeing if letter typed is in word */
 function letterCheck(letter) {
-   for (var i = 0; i < lettersInWord.length; i++){
-       if (letter != lettersInWord[i] && !lettersGuessed.includes(letter) && !lettersInWord.includes(letter)) {
-	   lettersGuessed.push(letter);
-	   timeLeft--;
-	   riverHeight += 15;
-	   console.log(riverHeight);
-	   
-       } else if (lettersInWord[i] === letter) {
-	   successes[i] = letter;
-	   document.getElementById("guessWord").innerHTML = successes.join(" ");
-	   
-       } else {
-	   
-       } // close if statement
-   } // close for loop
+    for (var i = 0; i < lettersInWord.length; i++){
+	if (letter != lettersInWord[i] && !lettersGuessed.includes(letter) && !lettersInWord.includes(letter)) {
+	    lettersGuessed.push(letter);
+	    timeLeft--;
+	    riverHeight += 15;
+	    console.log(riverHeight);
+	    
+	} else if (lettersInWord[i] === letter) {
+	    successes[i] = letter;
+	    document.getElementById("guessWord").innerHTML = successes.join(" ");
+	    
+	} else {
+	    
+	} // close if statement
+    } // close for loop
 
     
     document.getElementById("wrongLetters").innerHTML = lettersGuessed.join(" ");
@@ -85,34 +125,43 @@ function letterCheck(letter) {
 }; // closes letterCheck
 
 function roundComplete() {
-    if (wins === 3){
-	level++;
-	wins = 0;
-	timeLeft = 10;
-	console.log("level up");
-	document.getElementById("level").innerHTML = level;
-	document.getElementById("wins").innderHTML = wins;
-	startGame();
-	
-    } else if (lettersInWord.join("") === successes.join("")) {
+    if (lettersInWord.join("") === successes.join("")) {
 	wins++;
 	console.log(lettersInWord);
 	console.log(successes);
-	document.getElementById("wins").innerHTML = wins;
 	lettersGuessed = [];
 	startGame();
 	
+    } else if (level === 1 && wins === 2) {
+	level++;
+	timeLeft = 10;
+	console.log("level up");
+	alert("You win level 1 and saved 2 animals!");
+	startGame();
+	
+    } else if (level === 2 && wins === 6) {
+	level++;
+	timeLeft = 8;
+	alert("You win level 2 and saved 4 animals");
+	startGame();
+	
+    } else if (level === 3 && wins === 12) {
+	alert("You Win!! You have saved all the animals!!!");
+
     } else if (timeLeft === 0) {
 	lettersGuessed = [];
 	alert("You Lose!");
 	startGame();
-    } else {
     }
+
     
+    document.getElementById("level").innerHTML = level;
+    document.getElementById("wins").innderHTML = wins;
     document.getElementById("wrongLetters").innerHTML = lettersGuessed.join(" ");
     document.getElementById("timeToFlood").innerHTML = timeLeft;
     document.getElementById("river").style.height = riverHeight + "px";
-};
+
+}; // close function
 
 document.onkeyup = function(event){
     if (event.keyCode >= 65 && event.keyCode <= 122) {
