@@ -17,9 +17,9 @@ document.getElementById("pic6").style.visibility = "hidden";
 /* easy dictionary of words */
 var easyWords = ["ant", "anteater", "antelope", "bat", "bear", "beagle", "beaver", "bee", "beetle", "bird", "bulldog","bobcat", "bullfrog", "butterfly", "cat", "catfish", "camel", "cheetah", "chicken", "chipmunk", "cougar", "cow", "crab", "crane", "crocodile", "deer", "dingo", "dodo", "dog", "dolphin", "donkey", "duck", "eagle", "earwig", "eel","elephant", "emu", "falcon", "ferret", "fish", "flamingo", "flounder", "fly", "frog", "fox", "gorilla", "hornet", "leopard", "lion", "lizard", "monkey", "ostrich", "owl", "panther", "penguin", "rabbit", "seal","shark", "snake", "spider",  "squirrel", "tiger", "toad"];
 
-var mdWords = ["aardvark", "albatross", "alligator", "abyssinian", "angelfish", "armadillo", "axolotl", "barnacle", "bison", "bloodhound", "bombay", "buzzard", "capybara", "caterpillar",  "centipede", "chameleon", "chihuahua", "chimpanzee", "chinchilla", "cocker spaniel", "cockroach","cuttlefish", "dormouse", "dragonfly", "rhinoceros", ];
+var mdWords = ["aardvark", "albatross", "alligator", "abyssinian", "angelfish", "armadillo", "axolotl", "barnacle", "bison", "bloodhound", "bombay", "buzzard", "capybara", "caterpillar",  "centipede", "chameleon", "chihuahua", "chimpanzee", "chinchilla", "cocker spaniel", "cockroach","cuttlefish", "dormouse", "dragonfly", "rhinoceros"];
 
-var hardWords = ["adelie-penguin", "affenpinscher", "arctic-hare", "bearded-dragon", "bengal-tiger", "birds-of-paradise", "black-bear", "black-russian-terrier", "black-widow-spider", "blue-whale", "brown-bear", "bumble-bee", "butterfly-fish", "clown-fish", "darwins-frog", "dusky-dolphin", "dwarf-crocodile", "electric-eel", "emperor-penguin", "elephent-seal", "elephent-shrew", "fennec-fox", "fin-whale", "fire-bellied-toad", "flying-squirrel",];
+var hardWords = ["adelie penguin", "affenpinscher", "arctic hare", "bearded dragon", "bengal tiger", "birds of paradise", "black bear", "black russian terrier", "black widow spider", "blue whale", "brown bear", "bumble bee", "butterfly fish", "clown fish", "darwins frog", "dusky dolphin", "dwarf crocodile", "electric eel", "emperor penguin", "elephent seal", "elephent shrew", "fennec fox", "fin whale", "fire bellied toad", "flying squirrel"];
 
 function startGame() {
     if (level === 1) {
@@ -86,17 +86,16 @@ function startGame() {
 	word = hardWords[Math.floor(Math.random() * mdWords.length)];
 	lettersInWord = word.split("");
 	for (i = 0; i < lettersInWord.length; i++) {
-	    if (lettersInWord[i] === "-") {
+	    if (lettersInWord[i] === " ") {
 		successes.push(" ");
 	    } else {
 		successes.push("_");
 	    }
 
-	    document.getElementById("guessWord").innerHTML = successes.join(" ");
+	    document.getElementById("guessWord").innerHTML = successes.join("");
 	console.log(word);
     };
 
-    document.getElementById("guessWord").innerHTML = successes.join(" ");
     document.getElementById("timeToFlood").innerHTML = timeLeft;
     document.getElementById("wins").innerHTML = wins;
     document.getElementById("level").innerHTML = level;
@@ -123,13 +122,13 @@ function letterCheck(letter) {
 	} // close if statement
     } // close for loop
 
-    
+    roundComplete();
     document.getElementById("wrongLetters").innerHTML = lettersGuessed.join(" ");
     document.getElementById("timeToFlood").innerHTML = timeLeft;
     document.getElementById("river").style.height = riverHeight + "px";
     console.log("letters guessed: " + lettersGuessed);
     console.log("right letters: " + successes);
-    roundComplete();
+
 }; // closes letterCheck
 
 function roundComplete() {
@@ -139,6 +138,7 @@ function roundComplete() {
 	console.log(successes);
 	lettersGuessed = [];
 	startGame();
+	document.getElementById("wins").innerHTML = wins;
 	
     } else if (level === 1 && wins === 2) {
 	level++;
